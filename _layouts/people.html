@@ -1,0 +1,151 @@
+---
+layout: default
+---
+
+<!-- Page hero -->
+<header class="page-hero"{% if page.banner_image %} style="background-image: url('{{ page.banner_image | prepend: site.baseurl }}')"{% endif %}>
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content container">
+    <h1>{{ page.title }}</h1>
+  </div>
+</header>
+
+<div class="page-body people-page">
+  <div class="container">
+
+    <!-- ============================================================
+         CURRENT LAB MEMBERS
+         People are sorted into sections by their "category" field.
+         ============================================================ -->
+
+    {% assign pi_members      = site.people | where: "category", "pi" %}
+    {% assign postdocs        = site.people | where: "category", "postdoc"  | sort: "order" %}
+    {% assign phd_students    = site.people | where: "category", "phd"      | sort: "order" %}
+    {% assign undergrads      = site.people | where: "category", "undergrad" | sort: "order" %}
+
+    <!-- --- Principal Investigator --- -->
+    {% for person in pi_members %}
+    <section class="people-section" aria-labelledby="pi-heading">
+      <h2 class="section-title" id="pi-heading">Principal Investigator</h2>
+      <div class="pi-card">
+        <div class="pi-card__photo">
+          {% if person.photo %}
+            <img src="{{ '/assets/images/' | append: person.photo | prepend: site.baseurl }}"
+                 alt="{{ person.name }}"
+                 loading="eager">
+          {% else %}
+            <div style="width:100%;height:100%;background:#f2e9dc;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#d6c5ae;">👩‍🔬</div>
+          {% endif %}
+        </div>
+        <div class="pi-card__body">
+          <h3 class="pi-card__name">{{ person.name }}</h3>
+          <p class="pi-card__role">{{ person.role }}</p>
+          <div class="pi-card__contact">
+            {% if person.email %}<a href="mailto:{{ person.email }}">{{ person.email }}</a>{% endif %}
+            {% if person.phone %}<span>{{ person.phone }}</span>{% endif %}
+          </div>
+          {% if person.bio %}
+          <div class="pi-card__bio">{{ person.bio | markdownify }}</div>
+          {% endif %}
+          <div class="pi-card__links">
+            {% if person.website %}<a class="btn btn--outline" href="{{ person.website }}" target="_blank" rel="noopener">Personal Website</a>{% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+
+    <!-- --- Postdoctoral Researchers --- -->
+    {% if postdocs.size > 0 %}
+    <section class="people-section" aria-labelledby="postdoc-heading">
+      <h2 class="section-subtitle" id="postdoc-heading">Postdoctoral Researchers</h2>
+      <div class="members-grid">
+        {% for person in postdocs %}
+        {% include person-card.html person=person %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- --- PhD Students --- -->
+    {% if phd_students.size > 0 %}
+    <section class="people-section" aria-labelledby="phd-heading">
+      <h2 class="section-subtitle" id="phd-heading">PhD Students</h2>
+      <div class="members-grid">
+        {% for person in phd_students %}
+        {% include person-card.html person=person %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- --- Undergraduate Researchers --- -->
+    {% if undergrads.size > 0 %}
+    <section class="people-section" aria-labelledby="undergrad-heading">
+      <h2 class="section-subtitle" id="undergrad-heading">Undergraduate Researchers</h2>
+      <div class="members-grid">
+        {% for person in undergrads %}
+        {% include person-card.html person=person %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ============================================================
+         LAB ALUMNI
+         ============================================================ -->
+
+    {% assign alumni_postdocs  = site.people | where: "category", "alumni-postdoc"  | sort: "years_end" | reverse %}
+    {% assign alumni_grads     = site.people | where: "category", "alumni-grad"     | sort: "years_end" | reverse %}
+    {% assign alumni_undergrads = site.people | where: "category", "alumni-undergrad" | sort: "order" %}
+
+    {% if alumni_postdocs.size > 0 or alumni_grads.size > 0 or alumni_undergrads.size > 0 %}
+    <section class="alumni-section" aria-labelledby="alumni-heading">
+      <h2 class="section-title" id="alumni-heading">Lab Alumni</h2>
+
+      <!-- Alumni postdocs -->
+      {% if alumni_postdocs.size > 0 %}
+      <div class="alumni-subsection">
+        <h3 class="section-subtitle">Postdoctoral Scholars</h3>
+        <div class="alumni-grid">
+          {% for person in alumni_postdocs %}
+          {% include alumni-card.html person=person %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Alumni grad students -->
+      {% if alumni_grads.size > 0 %}
+      <div class="alumni-subsection">
+        <h3 class="section-subtitle">Graduate Students</h3>
+        <div class="alumni-grid">
+          {% for person in alumni_grads %}
+          {% include alumni-card.html person=person %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- Alumni undergrads -->
+      {% if alumni_undergrads.size > 0 %}
+      <div class="alumni-subsection">
+        <h3 class="section-subtitle">Undergraduate Researchers</h3>
+        <ul class="undergrad-list">
+          {% for person in alumni_undergrads %}
+          <li>
+            <strong>{{ person.name }}</strong>
+            {% if person.years %} · {{ person.years }}{% endif %}
+            {% if person.role %} · {{ person.role }}{% endif %}
+            {% if person.website %} · <a href="{{ person.website }}" target="_blank" rel="noopener">Website</a>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+    </section>
+    {% endif %}
+
+  </div><!-- /.container -->
+</div><!-- /.page-body -->

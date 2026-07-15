@@ -1,0 +1,89 @@
+// =============================================================================
+// PUBLICATIONS — year-grouped citation list
+// =============================================================================
+
+.publications-page {
+  padding: $sp-8 0 $sp-12;
+}
+
+.pub-year-group {
+  margin-bottom: $sp-4;
+}
+
+.pub-year-heading {
+  font-family: $font-heading;
+  font-size: 1.65rem;
+  color: $color-accent;
+  margin: $sp-8 0 $sp-3;
+  padding-bottom: $sp-1;
+  border-bottom: 2px solid $color-sand;
+
+  &:first-child { margin-top: 0; }
+}
+
+.pub-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pub-entry {
+  padding: $sp-2 0;
+  border-bottom: 1px solid $color-border-light;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: $color-text-secondary;
+
+  &:last-child { border-bottom: none; }
+
+  .pub-authors {
+    // default text color / weight — the citation text
+  }
+
+  .pub-year-inline {
+    font-weight: 700;
+    color: $color-text;
+  }
+
+  .pub-title {
+    font-style: italic;
+    color: $color-text;
+  }
+
+  .pub-journal {
+    // journal, volume, pages — normal weight
+  }
+
+  // Small DOI / link badge
+  .pub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-left: 0.4rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: $color-accent;
+    border: 1px solid $color-accent-light;
+    padding: 0.05rem 0.45rem;
+    border-radius: 3px;
+    text-decoration: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    transition: background 0.12s, color 0.12s;
+
+    &:hover {
+      background: $color-accent;
+      color: white;
+      border-color: $color-accent;
+      text-decoration: none;
+    }
+  }
+
+  .pub-note {
+    display: block;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: $color-accent;
+    margin-top: 0.2rem;
+  }
+}

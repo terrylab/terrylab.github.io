@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<!-- Page hero -->
+<header class="page-hero"{% if page.banner_image %} style="background-image: url('{{ page.banner_image | prepend: site.baseurl }}')"{% endif %}>
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content container">
+    <h1>{{ page.title }}</h1>
+  </div>
+</header>
+
+<div class="page-body publications-page">
+  <div class="container container--narrow">
+
+    {% if content and content != '' %}
+    <div class="lead" style="margin-bottom: 2.5rem;">{{ content }}</div>
+    {% endif %}
+
+    {% comment %}
+      Sort all publications by year descending, then get unique years.
+      Within each year, publications are ordered by the "order" field.
+    {% endcomment %}
+
+    {% assign all_pubs = site.publications | sort: "year" | reverse %}
+    {% assign pub_years = all_pubs | map: "year" | uniq %}
+
+    {% for year in pub_years %}
+      <h2 class="pub-year-heading">{{ year }}</h2>
+      <ul class="pub-list">
+        {% assign year_pubs = all_pubs | where: "year", year | sort: "order" %}
+        {% for pub in year_pubs %}
+        <li class="pub-entry">
+          {{ pub.authors }}.
+          {% if pub.note %}<span class="pub-note">{{ pub.note }}</span>{% endif %}
+          "<span class="pub-title">{{ pub.title }}</span>."
+          {% if pub.journal %}<span class="pub-journal">{{ pub.journal }}</span>{% endif %}
+          {% if pub.volume %} {{ pub.volume }}{% endif %}
+          {% if pub.pages %}: {{ pub.pages }}{% endif %}.
+          {% if pub.doi %}
+            <a class="pub-link" href="https://doi.org/{{ pub.doi }}" target="_blank" rel="noopener">DOI</a>
+          {% elsif pub.link %}
+            <a class="pub-link" href="{{ pub.link }}" target="_blank" rel="noopener">Link</a>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+
+  </div>
+</div>

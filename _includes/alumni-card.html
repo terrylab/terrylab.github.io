@@ -1,0 +1,24 @@
+{% comment %}
+  Renders a compact alumni card.
+  Usage: {% include alumni-card.html person=person %}
+{% endcomment %}
+
+<div class="alumni-card">
+  {% if include.person.photo %}
+    <img class="alumni-card__photo"
+         src="{{ '/assets/images/' | append: include.person.photo | prepend: site.baseurl }}"
+         alt="{{ include.person.name }}"
+         loading="lazy">
+  {% else %}
+    <div class="alumni-card__photo--placeholder" aria-hidden="true">👤</div>
+  {% endif %}
+
+  <div class="alumni-card__info">
+    <p class="alumni-card__name">{{ include.person.name }}</p>
+    {% if include.person.years %}<span class="alumni-card__years">{{ include.person.years }}</span>{% endif %}
+    {% if include.person.current_position %}<p class="alumni-card__position">{{ include.person.current_position }}</p>{% endif %}
+    {% if include.person.website %}
+      <a class="alumni-card__link" href="{{ include.person.website }}" target="_blank" rel="noopener">Website ↗</a>
+    {% endif %}
+  </div>
+</div>

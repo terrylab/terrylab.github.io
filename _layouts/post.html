@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<!-- Post banner image (if provided) or a standard page hero -->
+{% if page.photo %}
+<header class="page-hero">
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content container">
+    <h1>{{ page.title }}</h1>
+  </div>
+</header>
+{% else %}
+<header class="page-hero">
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content container">
+    <h1>{{ page.title }}</h1>
+  </div>
+</header>
+{% endif %}
+
+<div class="page-body post-page">
+  <div class="container">
+
+    <a href="{{ '/news/' | prepend: site.baseurl }}" class="back-link">All News</a>
+
+    <article>
+      <header class="post-header">
+        <p class="post-header__date">{{ page.date | date: "%B %-d, %Y" }}</p>
+      </header>
+
+      {% if page.photo %}
+      <div class="post-photo">
+        <img src="{{ '/assets/images/' | append: page.photo | prepend: site.baseurl }}"
+             alt="{{ page.photo_alt | default: page.title }}"
+             loading="lazy">
+      </div>
+      {% endif %}
+
+      <div class="post-body">
+        {{ content }}
+      </div>
+    </article>
+
+    <!-- Previous / Next post navigation -->
+    {% if page.previous or page.next %}
+    <nav class="post-nav" aria-label="Post navigation">
+      <div class="post-nav__prev">
+        {% if page.next %}
+        <a href="{{ page.next.url | prepend: site.baseurl }}">← {{ page.next.title }}</a>
+        {% endif %}
+      </div>
+      <div class="post-nav__next">
+        {% if page.previous %}
+        <a href="{{ page.previous.url | prepend: site.baseurl }}">{{ page.previous.title }} →</a>
+        {% endif %}
+      </div>
+    </nav>
+    {% endif %}
+
+  </div>
+</div>

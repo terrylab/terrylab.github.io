@@ -1,0 +1,23 @@
+---
+# Front matter required for Jekyll to process this Sass file
+---
+
+// Google Fonts — loaded via @import so they work in GitHub Pages without CDN link issues.
+// Lora: elegant serif for headings. Source Sans 3: clean sans-serif for body.
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+// Design tokens
+@import "variables";
+
+// Foundation
+@import "base";
+
+// Layout components
+@import "nav";
+@import "hero";
+@import "content";
+
+// Page-specific
+@import "people";
+@import "publications";
+@import "news";

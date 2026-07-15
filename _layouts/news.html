@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<!-- Page hero -->
+<header class="page-hero"{% if page.banner_image %} style="background-image: url('{{ page.banner_image | prepend: site.baseurl }}')"{% endif %}>
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content container">
+    <h1>{{ page.title }}</h1>
+  </div>
+</header>
+
+<div class="page-body news-page">
+  <div class="container">
+
+    {% if site.posts.size == 0 %}
+    <p class="lead">News posts will appear here. Add your first post to the <code>_posts/</code> folder!</p>
+    {% else %}
+    <div class="news-grid">
+      {% for post in site.posts %}
+      <a href="{{ post.url | prepend: site.baseurl }}" class="news-card">
+
+        {% if post.photo %}
+        <div class="news-card__photo">
+          <img src="{{ '/assets/images/' | append: post.photo | prepend: site.baseurl }}"
+               alt="{{ post.photo_alt | default: post.title }}"
+               loading="lazy">
+        </div>
+        {% else %}
+        <div class="news-card__photo--placeholder" aria-hidden="true">🦎</div>
+        {% endif %}
+
+        <div class="news-card__body">
+          <p class="news-card__date">{{ post.date | date: "%B %-d, %Y" }}</p>
+          <h2 class="news-card__title">{{ post.title }}</h2>
+          {% if post.excerpt %}
+          <p class="news-card__excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+          {% endif %}
+        </div>
+
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</div>

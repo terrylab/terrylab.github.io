@@ -1,0 +1,153 @@
+// =============================================================================
+// NAVIGATION — sticky top bar
+// =============================================================================
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: $color-nav;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+
+  &__inner {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 $gutter;
+    height: $nav-height;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $sp-4;
+  }
+}
+
+// Brand (lab name + institution)
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  flex-shrink: 0;
+  line-height: 1.2;
+
+  &__name {
+    font-family: $font-heading;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f0e6d3;
+    letter-spacing: 0.01em;
+  }
+
+  &__sub {
+    font-family: $font-body;
+    font-size: 0.68rem;
+    color: rgba(#f0e6d3, 0.55);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  &:hover .nav-brand__name { color: white; }
+}
+
+// Nav links list
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+
+  > li > a {
+    display: block;
+    padding: 0.45rem 0.65rem;
+    color: rgba(#f0e6d3, 0.82);
+    font-size: 0.84rem;
+    font-family: $font-body;
+    letter-spacing: 0.025em;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+    }
+
+    &.active {
+      color: white;
+      border-bottom-color: $color-accent-hover;
+    }
+  }
+}
+
+// Hamburger toggle (mobile only)
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: rgba(#f0e6d3, 0.85);
+    border-radius: 2px;
+    transition: transform 0.22s, opacity 0.22s;
+  }
+
+  &.is-open {
+    span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; }
+    span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+}
+
+// --- Mobile breakpoint ---
+@media (max-width: #{$bp-tablet}) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: $nav-height;
+    left: 0;
+    right: 0;
+    background: $color-nav;
+    flex-direction: column;
+    padding: $sp-2 0 $sp-3;
+    border-top: 1px solid rgba(white, 0.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+
+    &.is-open {
+      display: flex;
+    }
+
+    > li > a {
+      padding: 0.7rem 1.5rem;
+      border-bottom: none;
+      font-size: 0.92rem;
+
+      &.active {
+        background: rgba(white, 0.06);
+        border-left: 3px solid $color-accent-hover;
+        padding-left: calc(1.5rem - 3px);
+      }
+    }
+  }
+
+  .site-nav { position: sticky; } // keep sticky on mobile too
+}
+
+@media (max-width: #{$bp-mobile}) {
+  .site-nav__inner { padding: 0 $sp-2; }
+}

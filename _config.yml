@@ -1,0 +1,77 @@
+# =============================================================================
+# Terry Lab — Jekyll Configuration
+# https://terrylab.github.io
+# =============================================================================
+
+# --- Site identity ---
+title: Terry Lab
+tagline: "Paleoecology · Mammalogy · Conservation Biology"
+description: >
+  Research group in the Department of Integrative Biology at Oregon State University,
+  studying temporal and spatial responses of terrestrial communities to climate
+  and land-use change across modern, historical, and paleontological timeframes.
+url: "https://terrylab.github.io"
+baseurl: ""
+email: terryr@oregonstate.edu
+
+# --- Build settings ---
+markdown: kramdown
+highlighter: rouge
+permalink: /news/:year/:month/:day/:title/
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# --- Collections ---
+# Each person is a file in _people/; each publication in _publications/
+collections:
+  people:
+    output: false   # no individual person pages, just data for people.md
+  publications:
+    output: false   # no individual pub pages, just data for publications.md
+
+# --- Default front matter ---
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+# --- Plugins (all GitHub Pages–supported) ---
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# --- Top navigation (edit here to add/rename/reorder nav links) ---
+navigation:
+  - title: Home
+    url: /
+  - title: Shared Values
+    url: /shared-values/
+  - title: Research
+    url: /research/
+  - title: People
+    url: /people/
+  - title: Publications
+    url: /publications/
+  - title: Teaching
+    url: /teaching/
+  - title: Outreach
+    url: /outreach/
+  - title: Join Us
+    url: /join-us/
+  - title: "News + Photos"
+    url: /news/
+
+# --- Exclude from build ---
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - "*.sh"
+  - vendor/
+  - .bundle/
+  - .sass-cache/

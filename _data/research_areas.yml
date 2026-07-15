@@ -1,0 +1,48 @@
+# =============================================================================
+# RESEARCH AREAS — shown on the Research page
+# Each entry appears as an image + text block, alternating left/right.
+# Fields:
+#   title   — heading for this research area
+#   image   — path from site root, e.g. /assets/images/research-dead-lie.jpg
+#             Leave blank ("") if you haven't uploaded an image yet.
+#   text    — paragraph describing this area
+# To add a new area: copy one block, paste it below, and fill in the fields.
+# =============================================================================
+
+- title: "Do the Dead Lie? Reliability of Ecological Data from Skeletal Remains"
+  image: "/assets/images/research-dead-lie.jpg"
+  text: >
+    How closely do death-assemblages reflect the composition and structure of the living
+    community? We investigate predator selectivity, taphonomic bias, and the temporal and
+    spatial averaging inherent in accumulations of skeletal remains — asking whether the
+    fossil record is a faithful or distorted mirror of past life. Our work uses modern
+    "snap-shot" assemblages to calibrate what the dead can and cannot tell us about
+    the living.
+
+- title: "The Distribution of Diversity Across Gradients in Time and Space"
+  image: "/assets/images/research-diversity.jpg"
+  text: >
+    How has the intersection of landscape history, climate, biotic interactions, and human
+    impacts shaped the distribution of diversity across space and time? We examine
+    alpha, beta, and functional diversity along environmental gradients in the Great Basin
+    and beyond, asking how community properties respond when species composition shifts
+    and what role functional redundancy plays in buffering communities against change.
+
+- title: "Biotic Responses to Environmental Change"
+  image: "/assets/images/research-biotic.jpg"
+  text: >
+    Species do not respond to climate and land-use change uniformly. We investigate
+    distribution shifts, niche changes, and extinction patterns to ask: What traits shape
+    species responses, and to what degree are those traits shared within and across
+    phylogenetic groups? By combining historical records, museum specimens, and the
+    fossil record we reconstruct how populations and communities have navigated past
+    environmental transitions — and use those patterns to anticipate future trajectories.
+
+- title: "Shifting Baselines in Terrestrial Systems"
+  image: "/assets/images/research-baselines.jpg"
+  text: >
+    Effective conservation requires understanding what ecosystems looked like before human
+    modification. We use skeletal assemblages, museum collections, and historical accounts
+    to establish pre-industrial baselines and identify non-analogue community states.
+    Current projects examine how invasive species alter ecological function and community
+    composition, and whether pre-invasion states can serve as restoration targets.

@@ -1,0 +1,37 @@
+{% comment %}
+  Renders a current lab member card.
+  Usage: {% include person-card.html person=person %}
+{% endcomment %}
+
+<div class="person-card">
+  <div class="person-card__photo{% unless include.person.photo %} person-card__photo--placeholder{% endunless %}">
+    {% if include.person.photo %}
+      <img src="{{ '/assets/images/' | append: include.person.photo | prepend: site.baseurl }}"
+           alt="{{ include.person.name }}"
+           loading="lazy">
+    {% else %}
+      <span aria-hidden="true">👤</span>
+    {% endif %}
+  </div>
+
+  <div class="person-card__body">
+    <h3 class="person-card__name">{{ include.person.name }}</h3>
+    <p class="person-card__role">{{ include.person.role }}</p>
+
+    {% if include.person.email %}
+    <div class="person-card__contact">
+      <a href="mailto:{{ include.person.email }}">{{ include.person.email }}</a>
+    </div>
+    {% endif %}
+
+    {% if include.person.bio %}
+    <p class="person-card__bio">{{ include.person.bio }}</p>
+    {% endif %}
+
+    {% if include.person.website %}
+    <div class="person-card__links">
+      <a href="{{ include.person.website }}" target="_blank" rel="noopener">Personal website ↗</a>
+    </div>
+    {% endif %}
+  </div>
+</div>

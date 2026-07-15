@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<!-- Page hero -->
+<header class="page-hero"{% if page.banner_image %} style="background-image: url('{{ page.banner_image | prepend: site.baseurl }}')"{% endif %}>
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content container">
+    <h1>{{ page.title }}</h1>
+  </div>
+</header>
+
+<div class="page-body">
+  <div class="container">
+
+    <!-- Intro text from research.md body -->
+    <div class="research-intro lead">
+      {{ content }}
+    </div>
+
+    <!-- Research areas from _data/research_areas.yml -->
+    <h2 class="section-title">Active Research Areas</h2>
+
+    <div class="research-areas">
+      {% for area in site.data.research_areas %}
+        {% assign mod = forloop.index | modulo: 2 %}
+        <div class="research-area{% if mod == 0 %} research-area--reversed{% endif %}">
+
+          <div class="research-area__image{% unless area.image and area.image != '' %} research-area__image--placeholder{% endunless %}">
+            {% if area.image and area.image != '' %}
+              <img src="{{ area.image | prepend: site.baseurl }}" alt="{{ area.title }}" loading="lazy">
+            {% else %}
+              <span aria-hidden="true">🦴</span>
+            {% endif %}
+          </div>
+
+          <div class="research-area__text">
+            <h3>{{ area.title }}</h3>
+            <p>{{ area.text }}</p>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>

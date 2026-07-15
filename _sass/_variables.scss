@@ -1,0 +1,50 @@
+// =============================================================================
+// DESIGN TOKENS — Terry Lab
+// Earthy, natural-science palette: warm sand, clay, sage, deep brown
+// =============================================================================
+
+// --- Fonts ---
+$font-heading : 'Lora', Georgia, 'Times New Roman', serif;
+$font-body    : 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+
+// --- Color Palette ---
+$color-bg           : #faf8f4;   // warm off-white page background
+$color-bg-section   : #f2e9dc;   // light sand — alternate sections, cards
+$color-bg-card      : #ffffff;   // pure white for cards
+$color-nav          : #1e1610;   // very dark brown — nav background
+$color-border       : #d6c5ae;   // warm tan border
+$color-border-light : #ede3d4;   // very light border for card dividers
+
+$color-text         : #2a1f14;   // dark warm brown — primary text
+$color-text-secondary : #5e4b38; // medium brown — captions, secondary
+
+$color-accent       : #7a3b1e;   // deep rust — primary accent (links, buttons)
+$color-accent-hover : #a85228;   // brighter rust — hover state
+$color-accent-light : #e8d0c4;   // pale rust — tag backgrounds
+
+$color-sage         : #5c6e4f;   // sage green — secondary accent
+$color-sage-light   : #c4d4b8;   // pale sage
+
+$color-sand         : #dfc9a6;   // warm sand — decorative dividers
+$color-hero-overlay : rgba(30, 22, 16, 0.68); // nav color @ 68% opacity
+
+// --- Layout ---
+$max-width    : 1060px;
+$narrow-width : 720px;
+$gutter       : 2rem;
+$nav-height   : 68px;
+
+// --- Spacing scale (8-pt grid) ---
+$sp-1  : 0.5rem;   //  8px
+$sp-2  : 1rem;     // 16px
+$sp-3  : 1.5rem;   // 24px
+$sp-4  : 2rem;     // 32px
+$sp-6  : 3rem;     // 48px
+$sp-8  : 4rem;     // 64px
+$sp-12 : 6rem;     // 96px
+
+$section-pad : $sp-12;  // standard section vertical padding
+
+// --- Breakpoints ---
+$bp-mobile : 640px;
+$bp-tablet : 900px;

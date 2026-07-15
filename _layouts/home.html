@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<!-- Home page hero -->
+<div class="home-hero"{% if page.banner_image %} style="background-image: url('{{ page.banner_image | prepend: site.baseurl }}')"{% endif %}>
+  <div class="home-hero__overlay"></div>
+  <div class="home-hero__content">
+    <p class="home-hero__eyebrow">Department of Integrative Biology · Oregon State University</p>
+    <h1 class="home-hero__title">Terry Lab</h1>
+    <p class="home-hero__subtitle">Paleoecology · Mammalogy · Conservation Biology</p>
+  </div>
+</div>
+
+<!-- Home page body content (comes from index.md) -->
+<div class="home-content">
+  <div class="container">
+    {{ content }}
+  </div>
+</div>
